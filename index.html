@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventFrame</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    height: 100%; /* Ensure the body and HTML fill the full height */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push footer to the bottom */
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: left; /* Align text to the left */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between; /* Space between logo and navigation */
+    align-items: center; /* Center items vertically */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px; /* Set the logo height */
+    margin-right: 10px; /* Space between logo and title */
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+nav {
+    position: relative;
+}
+
+nav .menu-icon {
+    display: none; /* Hidden by default */
+    font-size: 28px;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+nav ul li {
+    display: inline; /* Inline for desktop */
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide navigation links by default */
+        flex-direction: column; /* Stack links vertically */
+        position: absolute; /* Position it absolutely */
+        top: 60px; /* Position below the header */
+        right: 0; /* Align to the right */
+        background: #333; /* Background for dropdown */
+        width: 200px; /* Set a fixed width for dropdown */
+        padding: 10px 0; /* Add padding for a nicer look */
+        border-radius: 5px; /* Optional: round the corners */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional: add a shadow */
+    }
+
+    nav ul.active {
+        display: flex; /* Show links when active */
+    }
+
+    nav .menu-icon {
+        display: block; /* Show the menu icon on mobile */
+    }
+
+    nav ul li {
+        display: block; /* Stack items vertically */
+        margin: 10px 0; /* Space between items */
+    }
+}
+
+.content-section {
+    padding: 40px 0;
+    text-align: center;
+    display: none; /* All sections are hidden by default */
+}
+
+#about {
+    background-color: #f4f4f4;
+}
+
+#services {
+    background-color: #eaeaea;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Footer is fixed at the bottom */
+footer {
+    background-color: #ff1f1f;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="" />
+                <h1>EventFrame</h1>
+            </div>
+            <nav>
+                <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+                <ul id="nav-links">
+                    <li><a href="#about" onclick="showSection('about')">About Us</a></li>
+                    <li><a href="#services" onclick="showSection('services')">Services</a></li>
+                    <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" class="content-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>"EventFrame: Professional Photography for Life's Biggest Moments" is a premier photography service specializing in capturing the essence of weddings, birthdays, and special events. We believe in turning moments into lifelong memories.</p>
+        </div>
+    </section>
+
+    <section id="services" class="content-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Wedding Photography</li>
+                <li>Birthday Parties</li>
+                <li>Corporate Events</li>
+                <li>Special Occasions</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Email: info@eventframe.com</p>
+            <p>Phone: (555) 123-4567</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 EventFrame | Professional Photography for Life's Biggest Moments</p>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Initially show only the "About Us" section
+        showSection('about');
+
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
